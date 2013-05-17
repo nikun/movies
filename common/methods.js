@@ -9,7 +9,11 @@ Meteor.methods({
         }
  
         // Insert movie (simulate on client, do it on server)
-        return Movies.insert(newMovie);
+        console.log("**antes de hacer el insert");
+        var pelis = Movies.insert(newMovie,"a","b","c");
+        console.log("**Desp de hacer el insert");
+
+        return pelis;
     }
  
 });

@@ -8,15 +8,39 @@ Meteor.publish("peliculas", function (param1,param2,param3){
 	return Movies.find({});
 });
 
-Movies.allow({
-	insert: function (userId,doc,p3){
 
+Movies.allow({
+	insert: function (userId,doc){
+
+		console.log("********ALLOW insert***");
+		console.log('userId: '+userId);
+		console.log('doc: '+doc.title);
+		
+		return true;
+	},
+
+	remove: function (userId,doc){
+		console.log("********ALLOW remove***");
 		console.log('userId: '+userId);
 		console.log('doc: '+doc);
-		console.log('p3: '+p3);		
 		return true;
 	}
 
+});
+
+
+// Keep track of how many administrators are online.
+var count = 0;
+var query = Movies.find({});
+var handle = query.observeChanges({
+  added: function (id, campos) {
+    count++;
+    console.log('---added---. ' + campos.title + " brings the total to " + count + " movies");
+  },
+  removed: function (id) {
+    count--;
+    console.log('---removed---. ' + "Lost one. We're now down to " + count + " movies.");
+  }
 });
 
 
