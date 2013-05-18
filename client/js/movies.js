@@ -1,8 +1,17 @@
-moviesHandle = Meteor.subscribe("peliculas", "100", "200", "300");
+moviesHandleAcc = Meteor.subscribe("peliculas", "Accion");
+moviesHandleCf = Meteor.subscribe("peliculas", "Ciencia Ficcion");
 
+
+Template.tplPrincipal.paramGeneroAccion = {
+  paramGenero: 'Accion'
+};
+Template.tplPrincipal.paramGeneroCF = {
+  paramGenero: 'Ciencia Ficcion'
+};
 
 Template.moviesList.movies = function() {
-  return Movies.find();
+  console.log('paramGenero: ' + this.paramGenero);
+  return Movies.find({genero:this.paramGenero});
 };
 
 // Handle movieForm events

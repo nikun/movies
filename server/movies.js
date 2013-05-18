@@ -1,9 +1,8 @@
-Meteor.publish("peliculas", function(param1, param2, param3) {
-	console.log('param1: ' + param1);
-	console.log('param2: ' + param2);
-	console.log('param3: ' + param3);
-
-	return Movies.find({});
+Meteor.publish("peliculas", function(genero) {
+	console.log('genero: ' + genero);
+	return Movies.find({
+		genero: genero
+	});
 });
 
 
@@ -43,8 +42,11 @@ var handle = query.observeChanges({
 
 
 Meteor.startup(function() {
-	Movies.remove({});
-	// if (Movies.find().count() === 0) {
+	console.log('-------AMBIENTE-------: ' + Meteor.settings.ambiente);
+	if (Meteor.settings.ambiente === "devel" && Meteor.settings.resetDB === true) {
+
+		Movies.remove({});
+
 		Movies.insert({
 			title: "Star Wars",
 			director: "Lucas",
@@ -70,5 +72,5 @@ Meteor.startup(function() {
 			director: "josee",
 			genero: "Accion"
 		});
-	// }
+	}
 });

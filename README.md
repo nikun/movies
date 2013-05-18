@@ -8,9 +8,7 @@ este proyecto es de prueba. sirve para ir aprendiendo METEOR.
 ## Configuraciones Sublime
 
 
-Para poder configurar shorCut: preferences-> key bindings-user:
-
-Install Meteor:
+Para poder configurar shorCut: preferences-> key bindings-user:<br>
 
     [
         { "keys": ["ctrl+shift+c"], "command": "toggle_comment", "args": { "block": false } },
