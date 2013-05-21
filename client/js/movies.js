@@ -1,8 +1,6 @@
-moviesHandleAcc = Meteor.subscribe("peliculas", "Accion");
-moviesHandleCf = Meteor.subscribe("peliculas", "Ciencia Ficcion");
 
 
-Template.tplPrincipal.paramGeneroAccion = {
+/*Template.tplPrincipal.paramGeneroAccion = {
   paramGenero: 'Accion'
 };
 Template.tplPrincipal.paramGeneroCF = {
@@ -13,6 +11,7 @@ Template.moviesList.movies = function() {
   console.log('paramGenero: ' + this.paramGenero);
   return Movies.find({genero:this.paramGenero});
 };
+*/
 
 // Handle movieForm events
 Template.movieForm.events = {
@@ -31,9 +30,10 @@ Template.movieForm.events = {
     //Movies.insert(newMovie);
 
     //BUG: aca se pudre
-
-    Meteor.call("addMovie", newMovie, function(err, result) {
+    Movies.insert(newMovie);
+    /*Meteor.call("addMovie", newMovie, function(err, result) {
       if (err) alert('hubo un error: ' + err.reason);
     });
+*/
   }
 };

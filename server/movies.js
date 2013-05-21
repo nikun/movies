@@ -1,8 +1,11 @@
-Meteor.publish("peliculas", function(genero) {
+/*Meteor.publish("peliculas", function(genero,limit) {
 	console.log('genero: ' + genero);
-	return Movies.find({
-		genero: genero
-	});
+	console.log('limit: ' + limit);
+	return Movies.find({genero: genero} , {limit:limit});
+});*/
+
+Meteor.publish("peliculas", function(genero, limit) {
+	return Movies.find({});
 });
 
 
@@ -47,7 +50,7 @@ Meteor.startup(function() {
 
 		Movies.remove({});
 
-		Movies.insert({
+		/*Movies.insert({
 			title: "Star Wars",
 			director: "Lucas",
 			genero: "Ciencia Ficcion"
@@ -71,6 +74,25 @@ Meteor.startup(function() {
 			title: "La Roca",
 			director: "josee",
 			genero: "Accion"
-		});
+		});*/
+
+		for (i = 0; i <= 100; i++) {
+			Movies.insert({
+				title: "La Roca " + i.toString(),
+				director: "josee",
+				genero: "Accion"
+			});
+		}
+
+		for (i = 0; i <= 100; i++) {
+			Movies.insert({
+				title: "ET " + i.toString(),
+				director: "josee",
+				genero: "Ciencia Ficcion"
+			});
+		}
+
+
+
 	}
 });

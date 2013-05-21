@@ -1,9 +1,15 @@
 <template name="moviesList">
 	<ul>
-		{{#each movies}}
+		{{#each this}}
 		<li>
-			{{title}}-{{director}}--{{genero}}
+		{{title}}-{{director}}--{{genero}}
 		</li>
 		{{/each}}
 	</ul>
+
+	<input type="button" id="btnProx" value="proximos 3"/>
+	<input type="button" id="btnBorrarSession" value="borrar session"/>	
+	<input type="button" id="btnCambiarGenero" value="cambiar genero"/>
+	<input type="text" id="txtGenero"/>
+
 </template>

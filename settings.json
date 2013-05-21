@@ -1,5 +1,5 @@
 {
 	"ambiente" : "devel",
-	"resetDB" : false,
+	"resetDB" : true,
 	"public" : "hola soy un valor q esta en client"
 }

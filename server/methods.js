@@ -7,9 +7,7 @@ Meteor.methods({
 		if (newMovie.director === "") {
 			throw new Meteor.Error(413, "Missing director!");
 		}
-
-
-		return pelis;
+		
 	}
 
 });
