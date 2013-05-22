@@ -1,14 +1,15 @@
 moviesHandleAcc = Meteor.subscribe("peliculas", "Accion");
 //moviesHandleCf = Meteor.subscribe("peliculas", "Ciencia Ficcion",15);
 
-Template.tplPrincipal.pelis_accion = function() {
+Template.tplPrincipal.pelisx_genero = function() {
 	console.log('GGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGG');
 	return Movies.find({genero:Session.get('genero')}, {limit:Session.get('limit')});
 };
 
-/*Template.tplPrincipal.pelis_cf = function() {
-	return Movies.find({genero:'Ciencia Ficcion'}, {limit:15});
-};*/
+Template.tplPrincipal.pelis_all = function() {
+	return Movies.find({}, {limit:15});
+
+};
 
 
 Template.moviesList.events({  
